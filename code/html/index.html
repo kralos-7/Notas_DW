@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Caracteres y codificación -->
+    <meta charset="UTF-8">
+
+    <!-- Vista en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título de la página -->
+    <title>Examples HTML5</title>
+
+    <!-- Descripción para motores de búsqueda -->
+    <meta name="description" content="Ejemplo de una página HTML5 con etiquetas meta. Aprende a estructurar tu HTML correctamente.">
+
+    <!-- Palabras clave -->
+    <meta name="keywords" content="HTML5, etiquetas meta, SEO, ejemplo">
+
+    <!-- Autor del contenido -->
+    <meta name="author" content="Nombre del autor">
+
+    <!-- Control de caché (para evitar que el navegador almacene una versión antigua) -->
+    <meta http-equiv="cache-control" content="no-cache">
+
+    <!-- Etiquetas de redes sociales (para mejorar la apariencia en redes) -->
+    <!-- Open Graph para Facebook -->
+    <meta property="og:title" content="Examples HTML5">
+    <meta property="og:description" content="Ejemplo de una página HTML5 con etiquetas meta. Aprende a estructurar tu HTML correctamente.">
+    <meta property="og:image" content="http://127.0.0.1:5500/code/html/imgs/imagen.png">
+    <meta property="og:url" content="http://127.0.0.1:5500/code/html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Examples HTML5">
+    <meta name="twitter:description" content="Ejemplo de una página HTML5 con etiquetas meta. Aprende a estructurar tu HTML correctamente.">
+    <meta name="twitter:image" content="http://127.0.0.1:5500/code/html/imgs/imagen.png">
+
+</head>
+<body>
+
+    <!-- Encabezado de la página -->
+    <header>
+        <h1>Mi sitio web</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Acerca de</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección principal de contenido -->
+    <main>
+        <section id="home">
+            <h2>Bienvenidos</h2>
+            <p>Este es un ejemplo de una página HTML5 con varias etiquetas nuevas y útiles.</p>
+        </section>
+
+        <section id="listas">
+            <ul>
+                <li>Manzanas</li>
+                <li>Naranjas</li>
+                <li>Plátanos</li>
+            </ul>
+            <ol>
+                <li>Precalentar el horno</li>
+                <li>Mezclar los ingredientes</li>
+                <li>Hornear durante 20 minutos</li>
+            </ol>
+            <dl>
+                <dt>HTML</dt>
+                <dd>Lenguaje de marcado para estructurar páginas web.</dd>
+            
+                <dt>CSS</dt>
+                <dd>Lenguaje de estilo para dar formato a las páginas web.</dd>
+            
+                <dt>JavaScript</dt>
+                <dd>Lenguaje de programación para agregar interactividad a las páginas web.</dd>
+            </dl>            
+            <ul>
+                <li>Frutas
+                    <ul>
+                        <li>Manzana</li>
+                        <li>Banana</li>
+                        <li>Naranja</li>
+                    </ul>
+                </li>
+                <li>Verduras
+                    <ul>
+                        <li>Zanahoria</li>
+                        <li>Brócoli</li>
+                        <li>Espinaca</li>
+                    </ul>
+                </li>
+            </ul>            
+        </section>
+
+        <section id="about">
+            <h2>Acerca de Nosotros</h2>
+            <p>Esta sección utiliza la etiqueta <code>&lt;section&gt;</code> para agrupar contenido.</p>
+            <figure>
+                <img src="imgs/imagen.png" alt="Descripción de la imagen">
+                <figcaption>Imagen de ejemplo con la etiqueta <code>&lt;figure&gt;</code>.</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
