@@ -12,3 +12,11 @@ button.addEventListener('click', () => {
 input.addEventListener('change', (event) => {
     messageDiv.textContent = `Has escrito: ${event.target.value}`;
 });
+
+window.onload = function() {
+    alert("Bienvenido");
+};
+
+document.addEventListener("mousemove", function(event) {
+    messageDiv.textContent = `Coordenadas del mouse: X=${event.clientX}, Y=${event.clientY}`;
+});
