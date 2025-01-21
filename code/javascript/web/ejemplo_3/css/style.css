@@ -1,36 +1,59 @@
 body {
-	font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+}
+
+.cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f9;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
 }
 
-/* Contenedor flex */
-.flex-container {
-    display: flex;                /* Activar Flexbox */
-    flex-direction: column;       /* Dirección de los elementos: vertical */
-    justify-content: center;      /* Alinear elementos verticalmente */
-    align-items: center;          /* Alinear elementos horizontalmente */
-    height: 100vh;                /* Altura de todo el viewport */
-    background-color: #f0f0f0;    /* Fondo para visualizar el contenedor */
+.cell.taken {
+    pointer-events: none;
+    color: #666;
 }
 
-/* Elementos dentro del contenedor */
-.flex-item {
-    background-color: #007bff;    /* Fondo de los elementos */
-    color: white;                 /* Color del texto */
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 18px;
-}
-
-#message {
+.winner {
     margin-top: 20px;
+    font-size: 24px;
+    color: green;
+}
+
+.reset {
+    margin-top: 20px;
+    padding: 10px 20px;
     font-size: 18px;
-    color: blue;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reset:hover {
+    background-color: #0056b3;
 }
