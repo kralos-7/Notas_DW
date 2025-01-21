@@ -25,6 +25,10 @@ form.addEventListener('submit', async (e) => {
 });
 
 function displayWeather(data) {
+
+    const jsonText = JSON.stringify(data); 
+    alert(jsonText);
+
     weatherInfo.style.display = 'block';
     errorMessage.style.display = 'none';
     const cityName = data.name;
