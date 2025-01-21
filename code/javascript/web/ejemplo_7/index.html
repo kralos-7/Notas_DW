@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo 5</title>
+    <title>Ejemplo 7</title>
 	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <h1>Lista de Publicaciones</h1>
-    <div id="post-list"></div>
+
+    <h1>Consulta el Clima</h1>
+    <form id="weather-form">
+        <input type="text" id="city" placeholder="Introduce una ciudad" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="weather-info" id="weather-info" style="display: none;">
+        <h2 id="city-name"></h2>
+        <p id="temperature"></p>
+        <p id="description"></p>
+        <p id="humidity"></p>
+    </div>
+    <div class="error" id="error-message" style="display: none;"></div>
+
 </body>
 <script src="js/main.js"></script>
 </html>
