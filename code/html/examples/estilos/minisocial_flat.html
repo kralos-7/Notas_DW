@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MiniSocial — Flat</title>
+<style>
+
+/* Flat design */
+:root{--bg:#f2f4f8;--card:#fff;--accent:#1877f2;--muted:#697077}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial;background:var(--bg);color:#111}
+.topbar{position:sticky;top:0;background:#fff;border-bottom:1px solid rgba(0,0,0,0.04);padding:10px}
+.topbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.logo{width:40px;height:40px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center}
+.search input{padding:10px 14px;border-radius:999px;border:none;box-shadow:none;background:#f6f8fa}
+.card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+.btn-post{background:var(--accent);color:#fff;padding:10px 14px;border-radius:999px;border:none}
+.muted{color:var(--muted)}
+.app{max-width:1100px;margin:32px auto;display:grid;grid-template-columns:240px 1fr 300px;gap:20px;padding:0 16px}
+
+</style>
+</head>
+<body>
+
+<header class="topbar" role="banner" aria-label="Barra superior">
+  <div class="topbar-inner">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">MS</div>
+      <div>
+        <h1>MiniSocial</h1>
+        <p class="muted">Estilo: Flat · HTML5 + CSS3</p>
+      </div>
+    </div>
+
+    <div class="search" role="search" aria-label="Buscar">
+      <input aria-label="Buscar en MiniSocial" placeholder="Buscar amigos, páginas o grupos..." />
+    </div>
+
+    <div class="top-actions" aria-hidden="false">
+      <button class="btn-icon" title="Inicio" aria-label="Inicio">🏠</button>
+      <button class="btn-icon" title="Mensajes" aria-label="Mensajes">💬</button>
+      <button class="btn-icon" title="Notificaciones" aria-label="Notificaciones">🔔</button>
+      <button class="btn-icon" title="Cuenta" aria-label="Cuenta">👤</button>
+    </div>
+  </div>
+</header>
+
+<main class="app" role="main">
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar left">
+    <nav class="card nav-list" aria-label="Navegación principal">
+      <a class="nav-item" href="#" tabindex="0">
+        <div class="ico">F</div>
+        <div>
+          <div style="font-weight:700">Feed</div>
+          <div class="muted">Últimas noticias</div>
+        </div>
+      </a>
+      <a class="nav-item" href="#" tabindex="0">
+        <div class="ico">G</div>
+        <div>
+          <div style="font-weight:700">Grupos</div>
+          <div class="muted">Comunidades</div>
+        </div>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- CENTER FEED -->
+  <section class="feed" aria-label="Feed de novedades">
+    <!-- Composer -->
+    <div class="card composer" role="region" aria-label="Crear publicación">
+      <div class="avatar" aria-hidden="true">TU</div>
+      <div class="box">
+        <div class="editor" role="textbox" aria-multiline="true">
+          <div contenteditable="true" aria-label="Escribe tu publicación">¿Qué estás pensando?</div>
+        </div>
+        <div class="actions">
+          <div class="left-actions">
+            <div class="chip" title="Añadir foto">📷 Foto</div>
+            <div class="chip" title="Etiquetar amigos">👥 Etiquetar</div>
+            <div class="chip" title="Sentimiento">😊 Sentimiento</div>
+          </div>
+          <div>
+            <button class="btn-post" aria-label="Publicar">Publicar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <article class="post" aria-labelledby="p1">
+      <div class="meta">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fef3c7,#fff7ed);display:flex;align-items:center;justify-content:center;font-weight:700">AL</div>
+          <div>
+            <div id="p1" class="name">Alex López <span class="muted" style="font-weight:400">· @alexlo</span></div>
+            <div class="time muted">30 oct · 21:10</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1">
+        <div class="content">Probando un diseño Flat. Micro-interacciones con hover y focus—sin JavaScript ✨</div>
+        <div class="actions-row" role="group" aria-label="Acciones de la publicación">
+          <div class="react" role="button" tabindex="0">
+            <span class="like-pill">👍</span>
+            <span class="muted">Me gusta</span>
+          </div>
+          <div class="react" role="button" tabindex="0">💬 <span class="muted">Comentar</span></div>
+          <div class="react" role="button" tabindex="0">↗️ <span class="muted">Compartir</span></div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="sidebar right">
+    <div class="card suggestions" aria-label="Sugerencias">
+      <h3 style="margin:0 0 8px 0">Sugerencias</h3>
+      <div class="item">
+        <div style="width:48px;height:48px;border-radius:8px;background:#f0fdf4;display:flex;align-items:center;justify-content:center">🏫</div>
+        <div style="flex:1">
+          <div style="font-weight:700">Universidad</div>
+          <div class="muted">Página oficial</div>
+        </div>
+        <div class="muted">Seguir</div>
+      </div>
+    </div>
+  </aside>
+</main>
+
+</body>
+</html>

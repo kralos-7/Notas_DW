@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Glassmorphism</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            color: #fff;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 220px;
+            height: 100vh;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #f0f0f0;
+            margin: 0.5rem 0;
+            transition: all 0.2s ease;
+        }
+        .sidebar a:hover {
+            color: #fff;
+            transform: translateX(4px);
+        }
+        header {
+            position: fixed;
+            top: 0; left: 220px;
+            right: 0;
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        main {
+            margin-left: 220px;
+            margin-top: 80px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 40px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Panel</h2>
+        <a href="#">Inicio</a>
+        <a href="#">Usuarios</a>
+        <a href="#">Ventas</a>
+        <a href="#">Estadísticas</a>
+        <a href="#">Configuración</a>
+    </div>
+    <header>
+        <h1>Dashboard - Glassmorphism</h1>
+        <div>👤 Admin</div>
+    </header>
+    <main>
+        <div class="card"><h3>Usuarios activos</h3><p>1,230</p></div>
+        <div class="card"><h3>Ventas del día</h3><p>$4,520</p></div>
+        <div class="card"><h3>Tareas pendientes</h3><p>8</p></div>
+        <div class="card"><h3>Soporte</h3><p>3 tickets</p></div>
+    </main>
+</body>
+</html>

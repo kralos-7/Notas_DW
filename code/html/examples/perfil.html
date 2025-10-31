@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MiniSocial — ejemplo HTML5 + CSS3</title>
+<style>
+  /* =========================
+     Variables y reset
+     ========================= */
+  :root{
+    --bg: #f2f4f8;
+    --card: #ffffff;
+    --muted: #697077;
+    --accent: #1877f2; /* azul tipo Facebook pero plano */
+    --accent-2: #2d88ff;
+    --glass: rgba(255,255,255,0.6);
+    --radius: 12px;
+    --shadow-1: 0 6px 18px rgba(20,24,28,0.06);
+    --shadow-2: 0 3px 8px rgba(20,24,28,0.05);
+    --soft-border: 1px solid rgba(15,20,25,0.06);
+    --max-width: 1100px;
+    --gap: 20px;
+    --font-sans: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:var(--font-sans);
+    background: linear-gradient(180deg, var(--bg), #eef2f6 200px);
+    color:#111827;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.4;
+  }
+
+  img{max-width:100%;display:block}
+
+  /* =========================
+     Layout
+     ========================= */
+  .app{
+    max-width:var(--max-width);
+    margin:32px auto;
+    display:grid;
+    grid-template-columns: 240px 1fr 300px;
+    gap:var(--gap);
+    padding: 0 16px;
+  }
+
+  header.topbar{
+    position:sticky;
+    top:0;
+    z-index:40;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    padding:10px 0;
+    box-shadow: 0 4px 10px rgba(10,14,20,0.02);
+  }
+
+  .topbar-inner{
+    max-width:var(--max-width);
+    margin: 0 auto;
+    display:flex;
+    gap:16px;
+    align-items:center;
+    padding: 6px 16px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:160px;
+  }
+
+  .logo{
+    width:40px;height:40px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+    box-shadow: var(--shadow-2);
+    flex-shrink:0;
+    transform: translateZ(0);
+    transition: transform .18s cubic-bezier(.2,.9,.3,1);
+  }
+  .logo:hover{ transform: translateY(-3px) scale(1.02); }
+
+  .brand h1{font-size:16px;margin:0;letter-spacing:-0.2px}
+  .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+  /* Search */
+  .search{
+    display:flex;
+    flex:1;
+    justify-content:center;
+  }
+
+  .search input{
+    width:100%;
+    max-width:560px;
+    padding:10px 14px;
+    border-radius:999px;
+    border:none;
+    box-shadow: var(--shadow-1);
+    outline: none;
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    font-size:14px;
+    transition: box-shadow .18s, transform .18s;
+  }
+  .search input::placeholder{color: #9aa7b2}
+  .search input:focus{
+    box-shadow: 0 10px 30px rgba(24,119,242,0.12);
+    transform: translateY(-2px);
+  }
+
+  .top-actions{
+    display:flex;gap:12px;align-items:center;
+    min-width:120px;
+    justify-content:flex-end;
+  }
+  .btn-icon{
+    width:38px;height:38px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+    background:transparent;border:none;cursor:pointer;
+    transition: background .12s, transform .12s;
+  }
+  .btn-icon:hover{ background: rgba(24,119,242,0.08); transform: translateY(-2px); }
+
+  /* =========================
+     Columns
+     ========================= */
+  .sidebar{
+    position:relative;
+  }
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow: var(--shadow-1);
+    padding:14px;
+    border: var(--soft-border);
+  }
+
+  /* Left sidebar */
+  .nav-list{ display:flex;flex-direction:column; gap:8px; }
+  .nav-item{
+    display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;color:#0f1724;text-decoration:none;
+    transition: background .12s, transform .12s;
+  }
+  .nav-item:hover{ background: rgba(15,23,36,0.03); transform: translateX(4px); }
+  .nav-item .ico{
+    width:36px;height:36px;border-radius:8px;background:linear-gradient(180deg,#f8fafc,#eef2ff);display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--accent);
+  }
+  .muted { color:var(--muted); font-size:13px }
+
+  /* Feed center */
+  main.feed{
+    min-height:60vh;
+  }
+
+  .composer{
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .avatar{
+    width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#f3f4f6,#e6eefc);display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--accent);
+    flex-shrink:0;
+  }
+
+  .composer .box{
+    flex:1;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .composer .editor{
+    background:var(--card);
+    border-radius:12px;padding:12px;border:var(--soft-border);min-height:70px;
+    box-shadow: var(--shadow-2);
+    transition: box-shadow .12s, transform .12s;
+  }
+  .composer .editor:focus-within{ box-shadow: 0 12px 30px rgba(2,6,23,0.06); transform: translateY(-2px) }
+  .composer [contenteditable]{ outline:none; min-height:44px; font-size:15px; color:#0b1220 }
+
+  .composer .actions{
+    display:flex;gap:8px;align-items:center;justify-content:space-between;
+    margin-top:6px;
+  }
+  .composer .left-actions{ display:flex;gap:8px; }
+  .chip{
+    display:inline-flex;gap:8px;align-items:center;padding:8px;border-radius:999px;font-size:13px;border:1px solid rgba(15,20,25,0.04);
+    background:linear-gradient(180deg,#fff,#fbfdff);cursor:pointer;transition: transform .12s;
+  }
+  .chip:hover{ transform: translateY(-3px) }
+
+  .btn-post{
+    background:var(--accent); color:white; padding:10px 14px;border-radius:999px;border:none;cursor:pointer;
+    box-shadow: 0 6px 18px rgba(24,119,242,0.18); font-weight:600;
+    transition: transform .12s, box-shadow .12s, opacity .12s;
+  }
+  .btn-post:disabled{ opacity:.6; cursor:default; box-shadow:none }
+
+  /* Post card */
+  .post{ display:flex; gap:12px; padding:14px; border-radius:12px; margin-top:14px; align-items:flex-start; border:var(--soft-border); background:var(--card); box-shadow: var(--shadow-2); }
+  .post .meta{ display:flex; flex-direction:column; gap:6px }
+  .post .meta .name{ font-weight:700; font-size:14px }
+  .post .meta .time{ font-size:12px; color:var(--muted) }
+
+  .post .content{ margin-top:8px; color:#111827; font-size:15px }
+  .post .actions-row{ display:flex; gap:10px; margin-top:12px; align-items:center; font-size:14px; color:var(--muted) }
+  .react{
+    display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:8px; cursor:pointer; transition: background .12s, transform .12s;
+  }
+  .react:hover{ background: rgba(15,23,36,0.03); transform: translateY(-2px) }
+
+  /* Right sidebar */
+  .suggestions .item{ display:flex; gap:10px; align-items:center; padding:10px; border-radius:10px; transition: background .12s; }
+  .suggestions .item:hover{ background: rgba(15,23,36,0.03) }
+
+  /* Tiny micro effect: floating "like" pill */
+  .like-pill{
+    display:inline-block; padding:6px 9px; border-radius:999px; background: linear-gradient(90deg,#fff,#f7fbff); border:1px solid rgba(15,20,25,0.04);
+    box-shadow: 0 6px 18px rgba(24,119,242,0.08); transform-origin:center center;
+    transition: transform .18s cubic-bezier(.2,.9,.3,1), opacity .18s;
+  }
+  .react:hover .like-pill{ transform: translateY(-6px) scale(1.03); opacity:0.98 }
+
+  /* Footer / small helper */
+  .muted-small{ color:var(--muted); font-size:13px }
+
+  /* =========================
+     Responsive
+     ========================= */
+  @media (max-width:1000px){
+    .app{ grid-template-columns: 1fr; padding-bottom: 60px; }
+    .sidebar.right{ order:3 }
+    .sidebar.left{ order:1 }
+    main.feed{ order:2 }
+    header.topbar{ position:fixed; left:0; right:0; top:0 }
+    .app{ margin-top:72px }
+  }
+
+  /* Accessibility focus */
+  :focus{ outline: 3px solid rgba(24,119,242,0.14); outline-offset: 2px; border-radius:6px; }
+</style>
+</head>
+<body>
+
+<header class="topbar" role="banner" aria-label="Barra superior">
+  <div class="topbar-inner">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">MS</div>
+      <div>
+        <h1>MiniSocial</h1>
+        <p class="muted">Con estilo flat · HTML5 + CSS3</p>
+      </div>
+    </div>
+
+    <div class="search" role="search" aria-label="Buscar">
+      <input aria-label="Buscar en MiniSocial" placeholder="Buscar amigos, páginas o grupos..." />
+    </div>
+
+    <div class="top-actions" aria-hidden="false">
+      <button class="btn-icon" title="Inicio" aria-label="Inicio">🏠</button>
+      <button class="btn-icon" title="Mensajes" aria-label="Mensajes">💬</button>
+      <button class="btn-icon" title="Notificaciones" aria-label="Notificaciones">🔔</button>
+      <button class="btn-icon" title="Cuenta" aria-label="Cuenta">👤</button>
+    </div>
+  </div>
+</header>
+
+<main class="app" role="main">
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar left">
+    <nav class="card nav-list" aria-label="Navegación principal">
+      <a class="nav-item" href="#" tabindex="0">
+        <div class="ico">F</div>
+        <div>
+          <div style="font-weight:700">Feed</div>
+          <div class="muted">Últimas noticias</div>
+        </div>
+      </a>
+
+      <a class="nav-item" href="#" tabindex="0">
+        <div class="ico">G</div>
+        <div>
+          <div style="font-weight:700">Grupos</div>
+          <div class="muted">Comunidades</div>
+        </div>
+      </a>
+
+      <a class="nav-item" href="#" tabindex="0">
+        <div class="ico">M</div>
+        <div>
+          <div style="font-weight:700">Marketplace</div>
+          <div class="muted">Ofertas locales</div>
+        </div>
+      </a>
+
+      <hr style="border:none;height:1px;background:rgba(15,20,25,0.03);margin:12px 0;border-radius:4px" />
+
+      <div class="muted-small">Favoritos</div>
+      <a class="nav-item" href="#"><div style="width:44px;height:44px;border-radius:8px;background:#eef2ff;display:flex;align-items:center;justify-content:center">🍔</div><div><div style="font-weight:700">Cafetería</div><div class="muted">Sala C</div></div></a>
+      <a class="nav-item" href="#"><div style="width:44px;height:44px;border-radius:8px;background:#fff0f0;display:flex;align-items:center;justify-content:center">🎮</div><div><div style="font-weight:700">Gamer Club</div><div class="muted">Amigos</div></div></a>
+    </nav>
+  </aside>
+
+  <!-- CENTER FEED -->
+  <section class="feed" aria-label="Feed de novedades">
+    <!-- Composer -->
+    <div class="card composer" role="region" aria-label="Crear publicación">
+      <div class="avatar" aria-hidden="true">TU</div>
+      <div class="box">
+        <div class="editor" role="textbox" aria-multiline="true">
+          <div contenteditable="true" aria-label="Escribe tu publicación">¿Qué estás pensando?</div>
+        </div>
+        <div class="actions">
+          <div class="left-actions">
+            <div class="chip" title="Añadir foto">📷 Foto</div>
+            <div class="chip" title="Etiquetar amigos">👥 Etiquetar</div>
+            <div class="chip" title="Sentimiento">😊 Sentimiento</div>
+          </div>
+          <div>
+            <button class="btn-post" aria-label="Publicar">Publicar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sample posts -->
+    <article class="post" aria-labelledby="p1">
+      <div class="meta">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fef3c7,#fff7ed);display:flex;align-items:center;justify-content:center;font-weight:700">AL</div>
+          <div>
+            <div id="p1" class="name">Alex López <span class="muted" style="font-weight:400">· @alexlo</span></div>
+            <div class="time muted">30 oct · 21:10</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1">
+        <div class="content">Probando un diseño minimalista solo con HTML y CSS. Micro-interacciones con hover y focus para sensación viva—sin JavaScript ✨</div>
+        <div class="actions-row" role="group" aria-label="Acciones de la publicación">
+          <div class="react" role="button" tabindex="0">
+            <span class="like-pill">👍</span>
+            <span class="muted">Me gusta</span>
+          </div>
+          <div class="react" role="button" tabindex="0">💬 <span class="muted">Comentar</span></div>
+          <div class="react" role="button" tabindex="0">↗️ <span class="muted">Compartir</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="post" aria-labelledby="p2">
+      <div class="meta">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ede9fe,#eef2ff);display:flex;align-items:center;justify-content:center;font-weight:700">MG</div>
+          <div>
+            <div id="p2" class="name">Marta Gómez <span class="muted" style="font-weight:400">· @martag</span></div>
+            <div class="time muted">29 oct · 17:05</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1">
+        <div class="content">Compartiendo recursos para un proyecto de front-end: enfoque mobile-first, accesibilidad y CSS Grid. ¿Alguien usa Openbox + Vim en su flujo?</div>
+        <div class="actions-row">
+          <div class="react">🔥 <span class="muted">Me encanta</span></div>
+          <div class="react">💬 <span class="muted">Comentar</span></div>
+          <div class="react">🔗 <span class="muted">Enlace</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- pequeña nota al final -->
+    <div style="margin-top:18px" class="muted-small">Fin del feed — diseño responsive, accesible y puro CSS.</div>
+  </section>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="sidebar right">
+    <div class="card suggestions" aria-label="Sugerencias">
+      <h3 style="margin:0 0 8px 0">Sugerencias</h3>
+
+      <div class="item" style="display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff)">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div style="width:48px;height:48px;border-radius:8px;background:#f0fdf4;display:flex;align-items:center;justify-content:center">🏫</div>
+          <div>
+            <div style="font-weight:700">Universidad</div>
+            <div class="muted">Página oficial</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button class="chip" style="padding:8px 12px">Seguir</button>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="item">
+        <div style="width:44px;height:44px;border-radius:8px;background:#fff7ed;display:flex;align-items:center;justify-content:center">🎧</div>
+        <div style="flex:1">
+          <div style="font-weight:700">Playlist Tech</div>
+          <div class="muted">Para programar</div>
+        </div>
+        <div class="muted">Seguir</div>
+      </div>
+
+      <hr style="border:none;height:1px;background:rgba(15,20,25,0.03);margin:12px 0;border-radius:4px" />
+
+      <div class="muted-small">Enlaces rápidos</div>
+      <ul style="list-style:none;padding:0;margin:8px 0 0 0;display:flex;flex-direction:column;gap:8px">
+        <li><a class="muted" href="#">Configuración</a></li>
+        <li><a class="muted" href="#">Privacidad</a></li>
+        <li><a class="muted" href="#">Ayuda</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+</body>
+</html>
+

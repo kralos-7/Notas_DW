@@ -12,6 +12,7 @@ fetch(apiUrl)
     .then(data => {
         // Mostrar datos en el DOM
         const userList = document.getElementById('user-list');
+		alert(JSON.stringify(data));
         data.forEach(user => {
         const userItem = document.createElement('p');
         userItem.textContent = `${user.name} (${user.email})`;
