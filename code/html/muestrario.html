@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Muestrario HTML5 — Ejemplos de elementos</title>
+  <style>
+    :root{--gap:12px;--card-bg:#ffffff;--muted:#666}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:#f5f7fb; color:#111; margin:0; padding:28px}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    h1{margin:0;font-size:1.6rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+    .card{background:var(--card-bg);border-radius:10px;padding:14px;box-shadow:0 6px 18px rgba(20,30,60,.06)}
+    .card h2{margin-top:0;font-size:1.05rem}
+    label{display:block;margin-bottom:6px;font-weight:600}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .muted{color:var(--muted);font-size:.9rem}
+    table{width:100%;border-collapse:collapse}
+    th,td{border:1px solid #e6e9ef;padding:8px;text-align:left}
+    pre{background:#0b1220;color:#dff0ff;padding:10px;border-radius:6px;overflow:auto}
+    footer{margin-top:18px;text-align:center;color:var(--muted)}
+    .small{font-size:.9rem}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Muestrario HTML5</h1>
+    <div class="muted">Mostrar la mayoría de etiquetas y controles HTML5 — interactivo</div>
+  </header>
+
+  <main class="grid">
+    <section class="card" id="text-elements">
+      <h2>Texto y semántica</h2>
+      <p>Un <strong>párrafo</strong> con <em>énfasis</em>, <b>negrita</b>, <i>cursiva</i>, <small>texto pequeño</small>, y <mark>marcado</mark>.</p>
+      <p>Ejemplos inline: <code>&lt;code&gt;</code>, <samp>samp</samp>, <kbd>Ctrl</kbd>, <var>x</var>, <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+      <blockquote cite="https://example.com">Cita larga con &lt;blockquote&gt; y atributo cite.</blockquote>
+      <address>Contacto: Juan Pérez — <a href="mailto:juan@example.com">juan@example.com</a></address>
+      <hr>
+      <h3>Encabezados</h3>
+      <h1>H1 — título principal</h1>
+      <h2>H2 — secciones</h2>
+      <h3>H3 — subsecciones</h3>
+      <h4>H4</h4>
+      <h5>H5</h5>
+      <h6>H6</h6>
+    </section>
+
+    <section class="card" id="lists-tables">
+      <h2>Listas y tablas</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div>
+          <label>Lista ordenada</label>
+          <ol>
+            <li>Elemento 1</li>
+            <li>Elemento 2<ul><li>Subelemento</li></ul></li>
+            <li>Elemento 3</li>
+          </ol>
+        </div>
+        <div>
+          <label>Lista desordenada</label>
+          <ul>
+            <li>Azul</li>
+            <li>Rojo</li>
+            <li>Verde</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Tabla</h3>
+      <table>
+        <caption>Tabla de ejemplo</caption>
+        <colgroup><col style="width:30%"><col><col></colgroup>
+        <thead><tr><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr></thead>
+        <tbody>
+          <tr><td>Ana</td><td>28</td><td>Ciudad de México</td></tr>
+          <tr><td>Carlos</td><td>34</td><td>Monterrey</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Datos de ejemplo</td></tr></tfoot>
+      </table>
+    </section>
+
+    <section class="card" id="media">
+      <h2>Multimedia</h2>
+      <label>Imagen responsive (picture)</label>
+      <picture>
+        <source srcset="https://placehold.co/600x400?text=Hello+World" type="image/webp">
+        <img src="https://via.placeholder.com/600x200?text=png" alt="Imagen de ejemplo" style="max-width:100%;height:auto;border-radius:6px">
+      </picture>
+
+      <h3>Video y audio</h3>
+      <video controls width="100%" style="max-width:560px;border-radius:8px">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        Tu navegador no soporta &lt;video&gt;.
+      </video>
+
+      <audio controls>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+      </audio>
+
+      <h3>Canvas y SVG</h3>
+      <canvas id="sampleCanvas" width="320" height="120" style="border-radius:8px;display:block;margin-bottom:8px"></canvas>
+      <svg viewBox="0 0 100 30" width="100%" height="60" aria-label="SVG ejemplo">
+        <rect x="2" y="2" width="96" height="26" rx="4" fill-opacity="0.06" stroke="#333"/>
+        <text x="50" y="18" font-size="8" text-anchor="middle">SVG — gráfico vectorial</text>
+      </svg>
+    </section>
+
+    <section class="card" id="forms">
+      <h2>Formularios y controles</h2>
+      <form id="demoForm">
+        <div style="display:grid;gap:8px">
+          <label for="texto">Texto</label>
+          <input id="texto" name="texto" placeholder="texto" required>
+
+          <label>Inputs (varios tipos)</label>
+          <div class="row">
+            <input type="email" placeholder="email@example.com">
+            <input type="url" placeholder="https://">
+            <input type="tel" placeholder="(55) 5555 5555">
+            <input type="password" placeholder="contraseña">
+            <input type="number" min="0" max="100" value="10">
+            <input type="range" id="rango" min="0" max="100" value="20">
+            <output for="rango" id="rangoOutput">20</output>
+            <input type="color" value="#ff0000">
+            <input type="date">
+            <input type="datetime-local">
+            <input type="time">
+            <input type="month">
+            <input type="week">
+          </div>
+
+          <label>Checkbox y radio</label>
+          <div class="row">
+            <label><input type="checkbox" checked> Acepto</label>
+            <label><input type="checkbox"> Opción</label>
+            <label><input type="radio" name="r"> Opción A</label>
+            <label><input type="radio" name="r"> Opción B</label>
+          </div>
+
+          <label for="select">Select</label>
+          <select id="select">
+            <option>Opción 1</option>
+            <option>Opción 2</option>
+            <option>Opción 3</option>
+          </select>
+
+          <label for="multi">Select múltiple</label>
+          <select id="multi" multiple size="3">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+
+          <label for="file">Archivo</label>
+          <input id="file" type="file">
+
+          <label for="search">Buscador (search)</label>
+          <input id="search" type="search" placeholder="Buscar...">
+
+          <label for="textarea">Textarea</label>
+          <textarea id="textarea" rows="4"></textarea>
+
+          <label for="datalist">Datalist</label>
+          <input list="browsers" id="datalist" placeholder="Elige...">
+          <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Firefox">
+            <option value="Edge">
+            <option value="Safari">
+          </datalist>
+
+          <div class="controls">
+            <button type="submit">Enviar</button>
+            <button type="reset">Reset</button>
+            <button type="button" id="openDialog">Abrir &lt;dialog&gt;</button>
+          </div>
+
+        </div>
+      </form>
+
+      <h3>Controles de progreso y medición</h3>
+      <label> progreso &lt;progress&gt;</label>
+      <progress id="progress" value="35" max="100">35%</progress>
+      <label> medidor &lt;meter&gt;</label>
+      <meter value="0.6">60%</meter>
+
+      <h3>Elementos de salida</h3>
+      <label>output</label>
+      <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+        <input type="range" id="a" name="a" min="0" max="100" value="10">
+        <input type="number" id="b" name="b" min="0" max="100" value="20">
+        = <output name="result">30</output>
+      </form>
+
+    </section>
+
+    <section class="card" id="semantic">
+      <h2>Elementos semánticos y estructurales</h2>
+      <header><strong>Header</strong> — cabecera de sección</header>
+      <nav><a href="#">Enlace 1</a> · <a href="#">Enlace 2</a></nav>
+      <main><p>Elemento <code>&lt;main&gt;</code> (solo debe aparecer una vez por documento).</p></main>
+      <article><h3>Artículo</h3><p>Contenido de un artículo.</p></article>
+      <section><h4>Section</h4><p>Sección genérica.</p></section>
+      <aside><p>Aside — información relacionada</p></aside>
+      <footer>Footer — pie de página</footer>
+
+      <h3>Interactivos</h3>
+      <details>
+        <summary>Detalles (click para expandir)</summary>
+        <p>Contenido dentro de &lt;details&gt;.</p>
+      </details>
+
+      <template id="tpl">
+        <p>Plantilla — este contenido no se renderiza hasta clonarlo.</p>
+      </template>
+
+      <dialog id="dlg">
+        <form method="dialog">
+          <p>Diálogo nativo &lt;dialog&gt;.</p>
+          <menu>
+            <button value="close">Cerrar</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+    <section class="card" id="other">
+      <h2>Otros elementos útiles</h2>
+      <p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Enlace externo (noopener)</a></p>
+      <p><code>&lt;iframe&gt;</code> (sandbox)</p>
+      <iframe srcdoc="&lt;p&gt;Contenido en iframe&lt;/p&gt;" style="width:100%;height:120px;border:1px solid #e6e9ef;border-radius:6px" sandbox></iframe>
+
+      <h3>Microformato: &lt;time&gt;</h3>
+      <time datetime="2025-11-07">7 de noviembre de 2025</time>
+
+      <h3>Metadata</h3>
+      <meter low="0.2" high="0.8" value="0.4">Nivel</meter>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="muted">Muestrario generado — modifica el archivo para experimentar.</div>
+  </footer>
+
+  <script>
+    // Canvas demo
+    (function(){
+      const c = document.getElementById('sampleCanvas');
+      if(c && c.getContext){
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#f0f4ff';
+        ctx.fillRect(0,0,c.width,c.height);
+        ctx.fillStyle = '#333';
+        ctx.font = '18px sans-serif';
+        ctx.fillText('Canvas: dibujo simple',10,30);
+        ctx.beginPath(); ctx.arc(260,70,28,0,Math.PI*2); ctx.fillStyle='rgba(255,100,80,0.9)'; ctx.fill();
+      }
+    })();
+
+    // Range -> output
+    const rango = document.getElementById('rango');
+    const rangoOutput = document.getElementById('rangoOutput');
+    if(rango && rangoOutput){
+      rango.addEventListener('input', e=> rangoOutput.textContent = e.target.value);
+    }
+
+    // dialog control
+    const openDialog = document.getElementById('openDialog');
+    const dlg = document.getElementById('dlg');
+    if(openDialog && dlg){
+      openDialog.addEventListener('click', ()=>{
+        if(typeof dlg.showModal === 'function') dlg.showModal();
+        else alert('Tu navegador no soporta dialog nativo');
+      });
+    }
+
+    // Form submit demo (prevenir envío real)
+    const form = document.getElementById('demoForm');
+    if(form) form.addEventListener('submit', e=>{ e.preventDefault(); alert('Formulario (demo) — validado y prevenido envío.'); });
+
+    // template demo
+    const tpl = document.getElementById('tpl');
+    if(tpl){
+      const clone = tpl.content.cloneNode(true);
+      const container = document.createElement('div');
+      container.appendChild(clone);
+      document.getElementById('semantic').appendChild(container);
+    }
+
+  </script>
+</body>
+</html>
